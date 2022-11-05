@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from '@rneui/themed';
+import { Button, Input } from '@rneui/themed';
+import { Card } from '@rneui/base';
+import Login from './compo/Login';
+import Register from './compo/Register';
+
+import { useState } from 'react';
 
 export default function App() {
+  const [state, setState] = useState('register');
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button title={'Button'}>Click Me</Button>
-      <StatusBar style="auto" />
+      {state === 'login' ? <Login setState={setState} /> : <Register setState={setState} />}
     </View>
   );
 }
@@ -16,7 +21,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
 });
